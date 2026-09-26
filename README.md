@@ -1,42 +1,55 @@
 # GlyphForge
 
-**Programmatic font engineering for building consistent Latin and CJK typefaces.**
+**一个面向中英文字体的程序化字体工程实验项目。**
 
-GlyphForge is an experimental software-engineering project that explores how font design—especially Chinese font design—can be made more scalable through reusable glyph components, explicit style rules, and code-assisted generation.
+GlyphForge 希望探索一种更适合个人开发者与设计者的字体创作方式：将可复用的笔画、偏旁、部件、几何约束与风格参数显式表示出来，再通过代码辅助扩展字形规模，同时保留人工对最终视觉风格的控制。
 
-## Motivation
+## 项目动机
 
-This project started from a practical problem encountered while making a small game.
+这个项目来自一次很具体的开发经历。
 
-For English text, manually creating or importing a custom typeface is still manageable. For Chinese, however, the size of the character set makes fully manual production unrealistic for an individual project. Existing fonts are plentiful, but it is often difficult to find one that precisely matches the visual language of a specific game or interface.
+我之前尝试制作一个小游戏时，发现字体会直接影响整个作品的视觉气质。现成字体虽然很多，但往往很难找到与具体游戏风格真正匹配的一套。
 
-GlyphForge explores a different workflow: instead of treating every Chinese character as an isolated drawing task, represent reusable strokes, radicals, components, geometric constraints, and style parameters in code, then use them to assist glyph construction while keeping human control over the final visual style.
+对于英文，自己设计、修改或导入一套定制字体仍然具有一定可行性；但中文字符数量巨大，如果完全依赖人工逐字制作，对个人项目来说几乎不可执行。
 
-## Core Goals
+GlyphForge 因此尝试探索另一条路径：
 
-- Explore reusable representations for Latin and CJK glyph construction.
-- Reuse strokes, radicals, components, and structural rules where practical.
-- Maintain visual consistency across a large character set.
-- Automate repetitive parts of font building, export, and validation.
-- Keep the designer in control of style rather than pursuing fully automatic generation.
+> 不把每个中文字符都视为一个完全独立的绘制任务，而是研究如何把字体设计中的重复结构与风格规则表示为可复用、可组合、可调整的工程对象，再由程序帮助完成重复性工作。
 
-## Current Status
+这里的目标不是“让机器自动决定字体长什么样”，而是让代码帮助设计者把自己定义的风格扩展到更大的字符集合。
 
-**Phase 0 — research and architecture exploration.**
+## 核心目标
 
-The project is intentionally not committed to a single generation strategy yet. Early work should focus on small, testable prototypes and on understanding the font-engineering problem before scaling to large character sets.
+- 探索适用于 Latin 与 CJK 字形的可复用表示方式。
+- 研究笔画、偏旁、部件与结构规则的复用方式。
+- 在扩大字符规模的同时保持统一的视觉语言。
+- 自动化字体构建、导出、检查等重复流程。
+- 保留人工对字形风格、比例、视觉平衡与最终结果的控制。
+- 通过小规模实验逐步验证技术路线，而不是一开始追求完整中文字库。
 
-## Documentation
+## 当前阶段
 
-- [Vision](docs/VISION.md) — why the project exists and what problem it aims to solve.
-- [Roadmap](docs/ROADMAP.md) — proposed development phases.
-- [Architecture](docs/ARCHITECTURE.md) — initial technical boundaries and design questions.
-- [References](docs/REFERENCES.md) — useful projects, tools, papers, and design references.
-- [Decisions](docs/DECISIONS.md) — durable project decisions and their rationale.
-- [AGENTS.md](AGENTS.md) — project context and working rules for Codex/AI coding agents.
+**Phase 0 — 调研与架构探索。**
+
+目前还没有固定某一种字形生成方案。早期工作应优先回答具体问题，例如：
+
+- 笔画、偏旁和部件应该如何表示？
+- 哪些参数可以作为全局风格参数？
+- 同一个部件进入不同汉字结构后如何自适应？
+- 哪些地方可以复用，哪些地方必须做视觉修正？
+- 如何接入成熟的字体格式、构建与验证工具链？
+
+## 文档
+
+- [项目愿景](docs/VISION.md) — 为什么要做 GlyphForge，以及真正想解决的问题。
+- [开发路线](docs/ROADMAP.md) — 当前设想的阶段划分与演进顺序。
+- [架构说明](docs/ARCHITECTURE.md) — 初始技术边界、模块职责与待验证问题。
+- [参考资料](docs/REFERENCES.md) — 工具、项目、论文、字体与设计参考。
+- [设计决策](docs/DECISIONS.md) — 记录长期有效的关键决定与原因。
+- [AGENTS.md](AGENTS.md) — 提供给 Codex / AI Coding Agent 的项目上下文与工作约束。
 
 ## License
 
-Source code is released under the [MIT License](LICENSE).
+项目代码采用 [MIT License](LICENSE)。
 
-Any font files produced by GlyphForge may use a font-specific license such as the **SIL Open Font License 1.1 (OFL-1.1)**. Font licensing will be decided explicitly before distributable font assets are added.
+未来若仓库中加入可分发的字体文件，会单独评估适合字体资产的许可证，例如 **SIL Open Font License 1.1 (OFL-1.1)**，不会默认把代码许可证直接套用到字体成品上。
